@@ -61,20 +61,14 @@ function solution(new_id) {
     answer = new_id
     //6단계
     if(answer.length > 15){
-        if(answer[14] === '.'){
-            answer = answer.substring(0,14)
-        }else{
-            answer = answer.substring(0,15)
-        }
+        answer = answer.substring(0,15)
     }
-    
     
     //7단계
     console.log(answer)
     if(answer.length <= 2){
         let pluschar = answer[answer.length-1]
-        const range = 3- answer.length
-        for (let i = 0; i < range; i++){
+        for (let i = 0; i < 3- answer.length; i++){
             answer += pluschar
         }
     }
