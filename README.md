@@ -7,6 +7,7 @@
 ### 🚀 Bronze
 | 문제번호 | 링크 |
 | ----- | ----- |
+|10757. 큰 수 A＋B|[링크](./%EB%B0%B1%EC%A4%80/Bronze/10757.%E2%80%85%ED%81%B0%E2%80%85%EC%88%98%E2%80%85A%EF%BC%8BB/%ED%81%B0%E2%80%85%EC%88%98%E2%80%85A%EF%BC%8BB.py)|
 |10989. 수 정렬하기 3|[링크](./%EB%B0%B1%EC%A4%80/Bronze/10989.%E2%80%85%EC%88%98%E2%80%85%EC%A0%95%EB%A0%AC%ED%95%98%EA%B8%B0%E2%80%853/README.md)|
 |13300. 방 배정|[링크](./%EB%B0%B1%EC%A4%80/Bronze/13300.%E2%80%85%EB%B0%A9%E2%80%85%EB%B0%B0%EC%A0%95/README.md)|
 |2557. Hello World|[링크](./%EB%B0%B1%EC%A4%80/Bronze/2557.%E2%80%85Hello%E2%80%85World/README.md)|
