@@ -76,7 +76,7 @@ def solution(board):
             if nxtPos != None:
                 # 목표지점이라면
                 if board[nxtPos[0]][nxtPos[1]] == "G":
-                    answer = min(answer, curCost+1) 
+                    return curCost + 1 
                 
                 # 2-1-3 visit이력 있는지 확인
                 """
