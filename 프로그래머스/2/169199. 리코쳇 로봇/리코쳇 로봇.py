@@ -16,7 +16,7 @@ def solution(board):
     sizeY = len(board)
     sizeX = len(board[0])
     
-    visit = []
+    visit = set()
     Q = deque()
     
     # 1. start point
@@ -83,8 +83,8 @@ def solution(board):
                 visit = [[y,x], direction]
                 Q = [cost, [y,x]]
                 """
-                if [[nxtPos[0], nxtPos[1]], i] not in visit:
-                    visit.append([[nxtPos[0], nxtPos[1]], i])
+                if (nxtPos[0], nxtPos[1], i) not in visit:
+                    visit.add((nxtPos[0], nxtPos[1], i))
                     Q.appendleft([curCost+1, [nxtPos[0], nxtPos[1]]])
                     # print(f"append {nxtPos} d : {i}")
                     
