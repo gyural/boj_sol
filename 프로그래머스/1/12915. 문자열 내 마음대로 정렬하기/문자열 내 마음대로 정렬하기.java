@@ -1,6 +1,8 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 class Solution {
     public String[] solution(String[] strings, int n) {
@@ -8,10 +10,10 @@ class Solution {
         
         List<String> stringList = new ArrayList();
         
-        Arrays.sort(strings);
         
         for (String s: strings) stringList.add(s);
         
+        stringList.sort(Comparator.naturalOrder());
         stringList.sort((a,b) -> a.charAt(n) - b.charAt(n));
         
         for (int i =0; i< stringList.size(); i++) answer[i] = stringList.get(i);
