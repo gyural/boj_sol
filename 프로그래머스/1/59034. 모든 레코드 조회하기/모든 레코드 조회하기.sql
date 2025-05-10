@@ -1,0 +1,4 @@
+-- 코드를 입력하세요
+SELECT a.*
+FROM ANIMAL_INS a
+ORDER BY ANIMAL_ID
