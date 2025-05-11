@@ -1,0 +1,15 @@
+SELECT 
+    b.TITLE, 
+    r.BOARD_ID, 
+    r.REPLY_ID, 
+    r.WRITER_ID, 
+    r.CONTENTS,
+    TO_CHAR(r.CREATED_DATE, 'yyyy-mm-dd') AS CREATED_DATE
+FROM 
+    USED_GOODS_REPLY r
+INNER JOIN 
+    USED_GOODS_BOARD b ON r.BOARD_ID =  b.BOARD_ID
+WHERE
+    b.CREATED_DATE - TO_DATE('2022-10-01', 'yy-mm-dd') <= 29
+ORDER BY
+    r.CREATED_DATE, b.TITLE
