@@ -20,27 +20,19 @@ class Solution {
         int[] dx = {0, 0, -1, 1};
         
         Deque<QEl> Q = new ArrayDeque<>();
-        VisitEl[][] visit = new VisitEl[size][size];
-        for (int i=0; i<size; i++){
-            for (int j=0; j< size; j++){
-                visit[i][j] = new VisitEl(false,false,false,false, answer);
-            }
-        }
-        
+        int[][][] visit = new int[size][size][4];
         
         // 처음 오른쪽 출발
         if (board[0][1] == 0){
             QEl rightEl = new QEl(0,0,RIGHT, 0);
-            visit[0][0].cost =0;
-            visit[0][0].right =true;
+            visit[0][0][RIGHT] = 0;
             Q.addLast(rightEl);
         }
         
         // 처음 아래쪽 출발
         if (board[1][0] == 0){
             QEl downEl = new QEl(0,0,DOWN, 0);
-            visit[0][0].cost =0;
-            visit[0][0].down =true;
+            visit[0][0][DOWN] = 0;
             Q.addLast(downEl);
         }
         
@@ -68,44 +60,19 @@ class Solution {
                 }
                 
                 int nxtCost =  curEl.direction == i ? curEl.cost +100 : curEl.cost +600;
-                
-                QEl newEl = new QEl(nxtY,nxtX, i, nxtCost);
-                
-                if (visit[nxtY][nxtX].cost < nxtCost && isVisitedDirection(visit[nxtY][nxtX], i)){
+                if (visit[nxtY][nxtX][i] != 0 && visit[nxtY][nxtX][i] < nxtCost){
                     continue;
                 }
+                QEl newEl = new QEl(nxtY,nxtX, i, nxtCost);
                 
-                visit[nxtY][nxtX].cost = nxtCost;
-                if (i == 0){
-                    visit[nxtY][nxtX].up = true;
-                } else if (i==1){
-                    visit[nxtY][nxtX].down = true;
-                } else if (i==2){
-                    visit[nxtY][nxtX].left = true;
-                } else{
-                    visit[nxtY][nxtX].right = true;
-                }
+                
+                visit[nxtY][nxtX][i] = nxtCost;
                 Q.addLast(newEl);
-                    
             }
             
         }
         
-        
         return answer;
-    }
-    
-    public boolean isVisitedDirection(VisitEl el, int d){
-        if (d == 0){
-            return el.up;
-        } else if (d==1){
-            return el.down;
-        } else if (d==2){
-            return el.left;
-        } else{
-            return el.right;
-        }
-        
     }
     
     public boolean isOut(int y, int x, int size){
@@ -136,25 +103,6 @@ class Solution {
         @Override
         public String toString() {
             return "y=" + y + "x=" + x + "D=" +direction + "cost=" + cost;
-        }
-        
-            
-            
-    }
-    
-    public class VisitEl {
-        boolean up;
-        boolean down;
-        boolean left;
-        boolean right;
-        int cost;
-        
-        public VisitEl(boolean up, boolean down, boolean left, boolean right, int cost){
-            this.up = up;
-            this.down = down;
-            this.left = left;
-            this.right = right;
-            this.cost = cost;
         }
     }
         
