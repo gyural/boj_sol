@@ -1,19 +1,28 @@
+import java.util.*;
+
 class Solution {
     public String solution(int[] food) {
         String answer = "";
+        
         String left = "";
-        String right = "";
-        for (int i =0; i< food.length; i++){
-            for (int j=0; j < food[i] / 2; j++) left += (char)('0' + i);
+        int size = food.length;
+        
+        for (int i=1; i<size; i++){
+            int possibleNum = food[i] / 2;
+            
+            for (int j=0; j< possibleNum; j++) {
+                left += "" + i;
+                answer += "" + i;
+                
+            }
         }
-        
-        for (int i =left.length()-1; i >=0 ; i--) right += left.charAt(i);
-        
-        
-        for (int i = 0; i < left.length(); i++) answer += left.charAt(i);
-        answer += '0';
-        for (int i = 0; i < right.length(); i++) answer += right.charAt(i);
-        
+            
+    
+        int leftSize = left.length();
+        answer += "0";
+        for (int i=leftSize-1; i>=0 ;i--){
+            answer += left.charAt(i);
+        }
         
         
         return answer;
