@@ -6,7 +6,7 @@ class Solution {
         String valueByReverse = reverseString(valueBy3Digit);
       
         
-        return get3digit(valueByReverse);
+        return Integer.parseInt(valueByReverse, 3);
     }
     
     private int get3digit (String digit3) {
