@@ -1,22 +1,31 @@
-import java.util.PriorityQueue;
-import java.util.Comparator;
+import java.util.*;
 
 class Solution {
     public int[] solution(int k, int[] score) {
-        int[] answer = new int[score.length];
         int size = score.length;
-        PriorityQueue<Integer> heap = new PriorityQueue();
+        int count = 0;
+        int[] answer = new int[size];
         
-        for (int i=0; i<size; i++){
-            int s = score[i]; 
+        Queue<Integer> heap = new PriorityQueue<>(); 
+        
+        for (int s: score) {
             heap.add(s);
+            while (heap.size() > k) {
+                heap.poll();
+            }
             
-            if (heap.size() > k) heap.poll();
-            
-            answer[i] = heap.poll();
-            heap.add(answer[i]);
+            answer[count] = getTopByHeap(heap);
+            count++;
         }
         
+        
         return answer;
+    }
+    
+    
+    private int getTopByHeap(Queue<Integer> heap) {
+        int v = heap.poll();
+        heap.add(v);
+        return v;
     }
 }
