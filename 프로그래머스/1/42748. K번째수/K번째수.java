@@ -1,23 +1,32 @@
-import java.util.Arrays;
+import java.util.*;
 
 class Solution {
     public int[] solution(int[] array, int[][] commands) {
-        int[] answer = new int[commands.length];
+        int size = commands.length;
         
-        int count = 0;
-        for (int[] cmd: commands){
-            int start = cmd[0]-1;
-            int end = cmd[1]-1;
-            int k = cmd[2]-1;
+        int[] answer = new int[size];
+        Queue<Integer> heap = new PriorityQueue<>((a,b) -> a-b);
+        
+        for (int t =0; t<size; t++){
+            int[] c = commands[t];
+            int start = c[0]-1;
+            int end = c[1]-1;
+            int K = c[2];
             
-            int[] subArr = new int[end-start+1];
-            for (int i=0; i<end-start+1; i++) subArr[i] = array[i+start];
             
-            Arrays.sort(subArr);
-            answer[count] = subArr[k];
-            count++;
+            for (int i=start; i<=end; i++){
+                heap.add(array[i]);
+            }
             
+            int curResult=0;
+            for (int i=0; i<K; i++){
+                curResult = heap.poll();
+            }
+            heap.clear();
+            
+            answer[t] = curResult;
         }
+        
         return answer;
     }
 }
